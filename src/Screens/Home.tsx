@@ -1,8 +1,12 @@
+
 import Destination from "../Components/Home/Destination";
 import HomeJumbotron from "../Components/Home/HomeJumbotron";
 import Offer from "../Components/Home/Offer";
-import PropertyType from "../Components/Home/PropertyType";
+
 import SearchBar from "../Components/Home/SearchBar";
+import Slider from "../Components/Slider";
+import PropertyTypes from "../mock/PropertyTypes";
+
 
 const Home = () => {
   return (
@@ -34,15 +38,10 @@ const Home = () => {
         </div>
       </div>
       {/* Property Type */}
-      <div className="px-[10%] mt-[5%]">
-        <h1 className="text-3xl font-semibold">Browse By Property Type</h1>
-
-        <div className=" grid grid-cols-2  gap-6 mt-4">
-          <PropertyType />
-          <PropertyType />
-          <PropertyType />
-          <PropertyType />
-        </div>
+      
+      {/* Slider */}
+      <div className="px-[10%] my-6">
+        <Slider data={PropertyTypes} />
       </div>
     </div>
   );
