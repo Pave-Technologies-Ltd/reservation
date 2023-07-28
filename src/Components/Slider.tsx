@@ -30,9 +30,9 @@ const Slider = ({ data }: SliderProps) => {
       >
         {data.map((property, index) => {
           return (
-            < >
+            <>
               <div
-              key={index} 
+                key={index}
                 ref={slideWidth}
                 className="slide  aspect-square h-full flex-shrink-0 snap-center rounded overflow-hidden"
               >
@@ -42,17 +42,17 @@ const Slider = ({ data }: SliderProps) => {
                   alt=""
                 />
 
-              <div>
-                <h1>{property.title}</h1>
-                <p>{property.description}</p>
-              </div>
+                <div>
+                  <h1>{property.title}</h1>
+                  <p className="text-[#6b9ccf]">{`${property.description} ${property.title}`}</p>
+                </div>
               </div>
             </>
           );
         })}
       </div>
 
-      <div className="absolute top-0 -left-4 h-full items-center hidden md:flex">
+      <div className="absolute top-0 -left-4 h-full items-center  md:flex">
         <button
           onClick={prevButtonHandler}
           role="button"
@@ -75,7 +75,7 @@ const Slider = ({ data }: SliderProps) => {
           </svg>
         </button>
       </div>
-      <div className="absolute top-0 -right-4 h-full items-center hidden md:flex">
+      <div className="absolute top-0 -right-4 h-full items-center  md:flex">
         <button
           onClick={nextButtonHandler}
           role="button"

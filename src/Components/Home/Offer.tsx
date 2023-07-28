@@ -9,7 +9,7 @@ const Offer = () => {
           Browse properties offering long-term stays, many at reduced monthly
           rates.
         </p>
-        <button className="py-1 w-[40%] bg-lightbackground hover:bg-background text-white font-bold">Find a Stay</button>
+        <button className="py-1 w-[40%] mt-2 bg-lightbackground hover:bg-background text-white font-bold">Find a Stay</button>
       </div>
       <div className="">
         <img
