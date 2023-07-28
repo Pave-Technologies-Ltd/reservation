@@ -3,11 +3,14 @@ import { Footer } from "../partials/Footer";
 
 const Layout = () => {
   return (
-    <>
+    <div className="">
       {/* <div>Layout</div> */}
       <Outlet />
+      
+
       <Footer/>
-    </>
+    
+    </div>
   );
 };
 
