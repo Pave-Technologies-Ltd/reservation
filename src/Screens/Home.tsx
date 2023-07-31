@@ -15,7 +15,7 @@ const Home = () => {
       <HomeJumbotron />
       <SearchBar />
       {/* Offers */}
-      <div className="md:px-[10%] px-[5%] mt-[5%]">
+      <div className="md:px-[10%] px-[5%] md:mt-[5%] mt-[20%]">
         <h1 className="text-3xl font-semibold">Offers</h1>
         <h6 className="text-md text-[#6b9ccf]">
           Promotions, deals and special offers for you
