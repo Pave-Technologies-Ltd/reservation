@@ -46,7 +46,7 @@ const PropertyTypes: {
     title: "Glamping",
     description: "21,000",
     image:
-      "https://images.pexels.com/photos/5920021/pexels-photo-8576739.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/13860053/pexels-photo-13860053.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
   {
     title: "Guest Houses",
