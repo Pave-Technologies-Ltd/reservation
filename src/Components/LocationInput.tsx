@@ -42,7 +42,7 @@ const LocationInput = ({
           onFocus={locationModalFocusHandler}
           type="text"
           placeholder="Where are you going to?"
-          className=" placeholder:text-sm pl-6 h-full w-full py-2 sm:text-sm outline-none placeholder:font-normal text-black  focus:border-2 focus:border-[#fed772]"
+          className=" focus:placeholder:text-[#b5b5b5] placeholder:font-medium font-medium  placeholder:text-sm placeholder:text-[#262626] pl-6 h-full w-full py-2 sm:text-sm outline-none  text-[#262626]  focus:border-2 focus:border-[#fed772]"
         />
       </div>
       {showLocationModal && (
