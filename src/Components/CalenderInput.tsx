@@ -39,7 +39,7 @@ const CalenderInput = ({
         />
       </div>
       {showCalender && (
-        <div ref={calenderModalRef} className="mt-1 absolute">
+        <div ref={calenderModalRef} className="mt-1 absolute shadow-md">
           <Calender
             selectedDayRange={selectedDayRange}
             setSelectedDayRange={setSelectedDayRange}
