@@ -194,10 +194,7 @@ const SearchBar = () => {
           UserInputModalRef={UserInputModalRef}
           UserInputHandler={UserInputHandler}
         />
-        {/* <input
-          type="text"
-          className=" border-4 border-lightbackground h-full outline-none md:w-[25%] w-[100%]"
-        /> */}
+
         <button
           onClick={() => {
             navigate("/searchresults");

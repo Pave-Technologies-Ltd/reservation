@@ -2,6 +2,7 @@ import { DayValue } from "@hassanmojab/react-modern-calendar-datepicker";
 import CalenderIcon from "../assets/CalenderIcon";
 import Calender from "./Calender/Calender";
 import { RefObject } from "react";
+import getMonth from "../utilities/getMonth";
 interface CalenderInputType {
   showCalender: boolean;
   selectedDayRange: selectedDateRangeType;
@@ -20,8 +21,17 @@ const CalenderInput = ({
   selectedDayRange,
   setSelectedDayRange,
   calenderClickHandler,
-  calenderModalRef
+  calenderModalRef,
 }: CalenderInputType) => {
+  
+  const from = `${selectedDayRange.from?.year}-${getMonth(
+    selectedDayRange.from?.month as number
+  )}-${selectedDayRange.from?.day}`;
+  const to = `${selectedDayRange.to?.year}-${getMonth(
+    selectedDayRange.to?.month as number
+  )}-${selectedDayRange.to?.day}`;
+
+  // console.log(selectedDayRange.from);
   return (
     <div className="relative md:w-[25%] w-[100%] h-full">
       {" "}
@@ -30,13 +40,12 @@ const CalenderInput = ({
           <CalenderIcon />
         </div>
 
-        <input
+        <div
           onClick={calenderClickHandler}
-          type="text"
-          className=" cursor-pointer placeholder:text-[#262626] placeholder:font-medium font-medium  pl-8 py-2  h-full w-full outline-none text-sm text-[#262626]"
-          readOnly
-          placeholder="Check-in date - check-out date"
-        />
+          className=" cursor-pointer  font-medium  pl-8 py-2  h-full w-full text-sm text-[#262626]"
+        >{`${selectedDayRange.from === null ? "Check-in date" : from} - ${
+          selectedDayRange.to === null ? "Check-out date" : to
+        }`}</div>
       </div>
       {showCalender && (
         <div ref={calenderModalRef} className="mt-1 absolute shadow-md">
