@@ -1,3 +1,4 @@
+// import { useDispatch } from "react-redux";
 import Destination from "../Components/Home/Destination";
 import HomeJumbotron from "../Components/Home/HomeJumbotron";
 import Offer from "../Components/Home/Offer";
@@ -6,13 +7,61 @@ import SearchBar from "../Components/Home/SearchBar";
 import Subscribe from "../Components/Home/Subscribe";
 import Slider from "../Components/Slider";
 import PropertyTypes from "../mock/PropertyTypes";
+import { useNavigate } from "react-router-dom";
+// import { getHotelsAction } from "../redux/actions/hotels.actions";
 
 const Home = () => {
+  const navigate = useNavigate();
+  // const dispatch = useDispatch();
+  const searchButtonHandler = ({
+    room,
+    adult,
+    checkin_date,
+    checkout_date,
+    dest_type,
+    dest_id,
+    children_number,
+    city_name,
+  }: {
+    room: string;
+    adult: string;
+    checkin_date: string;
+    checkout_date: string;
+    children_number: string;
+    dest_type: string | undefined;
+    dest_id: string | undefined;
+    city_name: string | undefined;
+  }) => {
+    // console.log(city_name)
+
+    if (
+      city_name === undefined &&
+      checkout_date === "undefined-undefined-undefined" &&
+      checkin_date === "undefined-undefined-undefined"
+    ) {
+      alert("Location Field and Checkin Date and Checkout Date are Empty");
+    }
+
+    if (
+      checkout_date === "undefined-undefined-undefined" ||
+      checkin_date === "undefined-undefined-undefined"
+    ) {
+      alert("Checkin Date or  Checkout Date is Empty");
+    }
+    
+
+      navigate({
+        pathname: "/searchResults",
+        search: `?CN=${city_name}&room=${room}&adult=${adult}&children_number=${children_number}&checkin_date=${checkin_date}&checkout_date=${checkout_date}&dest_type=${dest_type}&dest_id=${dest_id}`,
+      });
+  };
+
+ 
   return (
     <>
       <div className="">
         <HomeJumbotron />
-        <SearchBar />
+        <SearchBar searchButtonHandler={searchButtonHandler} />
         {/* Offers */}
         <div className="md:px-[10%] px-[5%] md:mt-[5%] mt-[20%]">
           <h1 className="text-3xl font-semibold">Offers</h1>

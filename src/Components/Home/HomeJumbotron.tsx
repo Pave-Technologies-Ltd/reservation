@@ -1,6 +1,6 @@
 
 import { useNavigate } from "react-router-dom";
-import {  Home } from "../../assets/svg"
+
 // import CurrencyList from 'currency-list'
 import {  useEffect } from "react";
 // import { useDispatch ,useSelector} from "react-redux";
@@ -29,11 +29,18 @@ const HomeJumbotron = () => {
   return (
     <div className="md:h-[350px] h-[500px] text-white bg-background md:px-[10%] px-[5%] pt-[2%] ">
       <div className="flex justify-between">
-        <div onClick={()=>{navigate('/')}} className="font-bold text-3xl cursor-pointer md:p-2 p-1 md:px-1 px-2 bg-white text-background ">Reservation.com</div>
-       
+        <div
+          onClick={() => {
+            navigate("/");
+          }}
+          className="font-bold text-3xl cursor-pointer md:p-2 p-1 md:px-1 px-2 bg-white text-background "
+        >
+          Reservation.com
+        </div>
+
         <div className="flex gap-2">
           <button
-            className="md:p-2 p-1 md:px-1 px-2 bg-white text-background  "
+            className="md:p-2 p-1 md:px-10 px-2 rounded-full font-medium text-white border transition-all duration-400 ease-in border-white hover:text-background hover:bg-white"
             onClick={() => {
               navigate("/sign-in");
             }}
@@ -41,7 +48,7 @@ const HomeJumbotron = () => {
             Register
           </button>
           <button
-            className="md:p-2 p-1 md:px-1 px-2 bg-white text-background "
+            className="md:p-2 p-1 md:px-10 px-2 rounded-full font-medium text-white border transition-all duration-400 ease-in border-white hover:text-background hover:bg-white"
             onClick={() => {
               navigate("/sign-in");
             }}
@@ -50,22 +57,13 @@ const HomeJumbotron = () => {
           </button>
         </div>
       </div>
-      <div className="flex gap-2 mt-[5%]">
+      {/* <div className="flex gap-2 mt-[5%]">
         <button className="py-2 px-4 border items-center flex gap-2 border-white rounded-full">
-
-          <Home/>
-          {/* <img className=" w-6 h-6 " src={Home} alt="" /> */}
+          <Home />
           Stay
         </button>
-        {/* <button className="py-2 px-4 hover:bg-lightbackground flex gap-2  rounded-full">
-          <img className=" w-6 h-6 " src={Globe} alt="" />
-          Flights
-        </button>
-        <button className="py-2 px-4 hover:bg-lightbackground flex gap-2  rounded-full">
-          <img className=" w-6 h-6 " src={Vehicle} alt="" />
-          Car Rentals
-        </button> */}
-      </div>
+       
+      </div> */}
       <div className="mt-[5%]">
         <h1 className="md:text-[50px] text-[30px] font-bold">
           Find Your Next Stay

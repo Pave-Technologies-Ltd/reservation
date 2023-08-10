@@ -28,10 +28,11 @@ const Slider = ({ data }: SliderProps) => {
         ref={slidesContainer}
         className="slides-container h-72 flex  snap-x snap-mandatory overflow-hidden  space-x-2 rounded scroll-smooth before:w-[45vw] before:shrink-0 after:w-[45vw] after:shrink-0 md:before:w-0 md:after:w-0"
       >
-        {data.map((property, index) => {
+        {data.map((property,index) => {
           return (
             <>
               <div
+                
                 key={index}
                 ref={slideWidth}
                 className="slide  aspect-square h-full flex-shrink-0 snap-center rounded overflow-hidden"

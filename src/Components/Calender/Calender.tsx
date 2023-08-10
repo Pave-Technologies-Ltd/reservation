@@ -1,5 +1,5 @@
 import "@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css";
-import { Calendar, DayValue } from '@hassanmojab/react-modern-calendar-datepicker';
+import { Calendar, DayValue, utils } from '@hassanmojab/react-modern-calendar-datepicker';
 
 type calenderType = {
   selectedDayRange: selectedDateRangeType;
@@ -18,7 +18,7 @@ const Calender = ({ selectedDayRange, setSelectedDayRange }: calenderType) => {
       value={selectedDayRange}
       onChange={setSelectedDayRange}
       shouldHighlightWeekends={true}
-      // minimumDate={utils(locale).getToday()}
+        minimumDate={utils('en').getToday()}
     />
   );
 };

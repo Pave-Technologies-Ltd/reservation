@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import LocationInput from "../LocationInput";
 import { useEffect, useState, useRef, ChangeEvent } from "react";
 import { useDispatch } from "react-redux";
@@ -11,8 +10,20 @@ import { DayValue } from "@hassanmojab/react-modern-calendar-datepicker";
 import CalenderInput from "../CalenderInput";
 import UserInput from "../UserInput";
 
-const SearchBar = () => {
-  const navigate = useNavigate();
+interface SearchBarType {
+  searchButtonHandler: (e: {
+    room: string;
+    adult: string;
+    city_name:string | undefined;
+    checkin_date: string ;
+    checkout_date: string;
+    children_number: string;
+    dest_type: string | undefined;
+    dest_id: string | undefined;
+  }) => void;
+}
+
+const SearchBar = ({ searchButtonHandler }: SearchBarType) => {
   const dispatch = useDispatch();
 
   type selectedDateRangeType = {
@@ -21,6 +32,12 @@ const SearchBar = () => {
   };
   const initialRef = useRef<HTMLDivElement>(null);
   type userInputActionType = "increase" | "decrease";
+  type locationDetailType = {
+    dest_type: string;
+    dest_id: string;
+    label: string;
+    city_name:string
+  };
   const locationModalRef = initialRef;
   const calenderModalRef = initialRef;
   const UserInputModalRef = initialRef;
@@ -28,8 +45,11 @@ const SearchBar = () => {
   const [showCalender, setShowcalender] = useState(false);
   const [showUserModal, setShowUserModal] = useState(false);
   const [locationSearchTerm, setLocationSearchTerm] = useState("");
+  const [selectedLocation, setSelectedLocation]= useState('');
   const [data, setData] = useState([]);
   const [adult, setAdult] = useState(1);
+  const [locationDetails, setLocationDetails] =
+    useState<locationDetailType | null>(null);
   const [children, setChildren] = useState(0);
   const [room, setRoom] = useState(1);
   // const [day, setDay] = useState<DayValue>(null);
@@ -41,7 +61,8 @@ const SearchBar = () => {
   const allLocations = useSelector<ReducersType>(
     (state: ReducersType) => state?.locations
   ) as reservationsResponseType;
-
+const checkInDate = `${selectedDayRange?.from?.year}-${selectedDayRange?.from?.month}-${selectedDayRange?.from?.day}`;
+const checkOutDate = `${selectedDayRange?.to?.year}-${selectedDayRange?.to?.month}-${selectedDayRange?.to?.day}`;
   const UserInputHandler = (action: userInputActionType, type: string) => {
     // Adult
     if (action === "increase" && type === "adult") {
@@ -78,12 +99,11 @@ const SearchBar = () => {
     }
   };
 
-  const selectLocationHandler = (location: {
-    dest_type: string;
-    dest_id: string;
-    label: string;
-  }) => {
-    setLocationSearchTerm(location.label);
+  const selectLocationHandler = (location: locationDetailType) => {
+    setLocationDetails(location);
+
+    setSelectedLocation(location.label);
+    // setLocationSearchTerm();
     setShowLocationModal(false);
   };
 
@@ -163,7 +183,7 @@ const SearchBar = () => {
     return () => clearTimeout(timer);
   }, [locationSearchTerm, dispatch]);
   // console.log(`${day?.year}-${day?.month}-${day?.day}`)
-  //  console.log(selectedDayRange);
+    // console.log(allLocations.serverResponse);
 
   return (
     <div className=" text-background absolute left-0 top-[330px] md:px-[10%] px-[5%] w-[100%]  h-[60px] ">
@@ -173,6 +193,7 @@ const SearchBar = () => {
           selectLocationHandler={selectLocationHandler}
           locationSearchTerm={locationSearchTerm}
           locations={data}
+          selectedLocation={selectedLocation}
           locationModalFocusHandler={locationModalFocusHandler}
           locationModalRef={locationModalRef}
           showLocationModal={showLocationModal}
@@ -196,10 +217,17 @@ const SearchBar = () => {
         />
 
         <button
-          onClick={() => {
-            navigate("/searchresults");
-          }}
-          className="md:w-[25%] w-[100%] border-4 border-lightbackground h-full bg-background hover:bg-lightbackground text-white font-bold"
+          onClick={searchButtonHandler.bind(null, {
+            room: room.toString(),
+            adult: adult.toString(),
+            dest_type: locationDetails?.dest_type,
+            checkin_date: checkInDate,
+            checkout_date: checkOutDate,
+            children_number: children.toString(),
+            dest_id: locationDetails?.dest_id,
+            city_name:locationDetails?.city_name
+          })}
+          className="md:w-[10%] w-[100%] border-4 border-lightbackground h-full bg-background hover:bg-lightbackground text-white font-bold"
         >
           Search
         </button>

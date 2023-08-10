@@ -4,11 +4,7 @@ import { GET_HOTELS_FAIL, GET_HOTELS_REQUEST, GET_HOTELS_SUCCESS } from "../cons
 export type reservationsResponseType = {
   loading: boolean;
   success?: boolean;
-  serverResponse?: {
-    status?: string;
-    message?: string;
-    data?: unknown;
-  };
+  serverResponse?: unknown;
   serverError?: {
     status?: string;
     error?: {

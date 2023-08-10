@@ -33,7 +33,7 @@ const CalenderInput = ({
 
   // console.log(selectedDayRange.from);
   return (
-    <div className="relative md:w-[25%] w-[100%] h-full">
+    <div className="relative md:w-[30%] w-[100%] h-full">
       {" "}
       <div className="relative w-[100%] h-full flex p-2 bg-white border-4  border-lightbackground items-center">
         <div className="absolute mx-1">
