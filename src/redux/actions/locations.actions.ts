@@ -17,10 +17,11 @@ export const getLocationsByNameAction =
         params: {
           name,
           locale: "en-gb",
+          page_size:'2'
         },
         headers: {
           "X-RapidAPI-Key":
-            "894a603dbbmsh29f902309717301p1e866ejsn951d60a3dbd4",
+            "58384481e7mshce8cc708fd6414ap1f6838jsna9f2faf27f7c",
           "X-RapidAPI-Host": "booking-com.p.rapidapi.com",
         },
       };

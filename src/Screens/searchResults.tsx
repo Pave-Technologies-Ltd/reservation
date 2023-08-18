@@ -7,6 +7,10 @@ import { getHotelsAction } from "../redux/actions/hotels.actions";
 import Property from "../Components/Properties/Property";
 import Spinner from "../utilities/Spinner";
 
+import PropertyType from "../Types/Property.types";
+
+import { Booking_API } from "../utilities/api";
+
 const SearchResults = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -20,6 +24,8 @@ const SearchResults = () => {
   const children_number = searchParams.get("children_number") as string;
   const cityName = searchParams.get("CN") as string;
 
+  const [properties, setProperties] = useState<PropertyType[]>([]);
+
   type serverResponseType = {
     [key: string]: unknown;
   };
@@ -28,14 +34,52 @@ const SearchResults = () => {
   ) as reservationsResponseType;
 
   const serverResponse = hotelsResponse.serverResponse as serverResponseType;
-  const [properties, setProperties] = useState([]);
-  // console.log(allHotels);
+
   useEffect(() => {
-    if (typeof serverResponse?.result === "undefined") {
-      return;
-    } else {
-      setProperties(Object.values(serverResponse?.result as []));
-    }
+    const effectFunction = async () => {
+      if (typeof serverResponse?.result === "undefined") {
+        return;
+      } else {
+        const finalProperties: PropertyType[] = [];
+        const initialProperties = Object.values(
+          serverResponse?.result as PropertyType[]
+        );
+
+        const loopFunction = async () => {
+          for (const hotel of initialProperties) {
+            const config = {
+              params: {
+                hotel_id: hotel.hotel_id,
+                locale: "en-gb",
+              },
+              headers: {
+                "X-RapidAPI-Key":
+                  "58384481e7mshce8cc708fd6414ap1f6838jsna9f2faf27f7c",
+                "X-RapidAPI-Host": "booking-com.p.rapidapi.com",
+              },
+            };
+
+            const { data } = await Booking_API.get(
+              `/hotels/description`,
+              config
+            );
+
+            const hotelWithDescription = {
+              ...hotel,
+              description: data.description,
+            };
+
+            finalProperties.push(hotelWithDescription);
+          }
+          return finalProperties;
+        };
+
+        const propertiesWithDescription = await loopFunction();
+
+        setProperties(propertiesWithDescription);
+      }
+    };
+    effectFunction();
   }, [serverResponse?.result]);
 
   useEffect(() => {
@@ -50,24 +94,9 @@ const SearchResults = () => {
         children_number == "0" ? "1" : children_number
       ) as never
     );
-  }, []);
+  });
 
-  // console.log(serverResponse)
-
-  //   console.log(properties);
-  //  console.log(typeof properties);
-
-  // useEffect(() => {
-  //   if (typeof properties === "undefined") {
-  //     return;
-  //   } else {
-  //     Object.entries(properties).forEach(([key,value]) => {
-  //       setProperties([...properties,value])
-  //     });
-  //   }
-  // }, [properties]);
-
-  console.log(properties);
+  
   return (
     <div className=" w-full h-full flex flex-col">
       <div
@@ -82,25 +111,26 @@ const SearchResults = () => {
       <div className="md:px-[10%] px-[5%] border w-[100%]  gap-4 mt-[5%] flex flex-col ">
         <div className=" border w-[100%] h-full gap-4 mt-[5%] flex">
           <div className="border w-[30%] h-full">Filter</div>
-          {hotelsResponse.loading ? (
+          {properties.length === 0 ? (
             <div className="border flex items-center w-full justify-center">
               <Spinner size="large" />
             </div>
           ) : (
             <div className="border w-[100%] h-full p-4">
               <div>
-                {hotelsResponse.loading ?"":(
-
-
-                <h1 className="font-bold">
-                  {`${cityName.toUpperCase()}: ${serverResponse?.count}`}{" "}
-                  properties found
-                </h1>
+                {hotelsResponse.loading ? (
+                  ""
+                ) : (
+                  <h1 className="font-bold">
+                    {`${cityName.toUpperCase()}: ${serverResponse?.count}`}{" "}
+                    properties found
+                  </h1>
                 )}
               </div>
 
-              {properties.map((property, index) => (
-                <div key={index}>
+              {properties.map((property) => (
+                
+                <div key={property.hotel_id}>
                   <Property property={property} />
                 </div>
               ))}

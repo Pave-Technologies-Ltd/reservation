@@ -30,18 +30,19 @@ export const getHotelsAction =
           locale: "en-gb",
           room_number,
           children_number,
-
+      
           categories_filter_ids: "class::2,class::4,free_cancellation::1",
           page_number: "0",
           include_adjacency: "true",
         },
         headers: {
           "X-RapidAPI-Key":
-            "894a603dbbmsh29f902309717301p1e866ejsn951d60a3dbd4",
+            "58384481e7mshce8cc708fd6414ap1f6838jsna9f2faf27f7c",
           "X-RapidAPI-Host": "booking-com.p.rapidapi.com",
         },
       };
       const { data } = await Booking_API.get(`/hotels/search`, config);
+     
 
        dispatch({ type: GET_HOTELS_SUCCESS, payload: data });
     } catch (error) {
