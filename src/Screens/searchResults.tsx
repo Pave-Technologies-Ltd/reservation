@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { ReducersType } from "../redux/store";
 import { reservationsResponseType } from "../redux/reducers/hotels.reducer";
 import { useState, useEffect } from "react";
@@ -13,7 +13,7 @@ import { Booking_API } from "../utilities/api";
 import TopBar from "../Components/TopBar";
 
 const SearchResults = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
   const room = searchParams.get("room") as string;
