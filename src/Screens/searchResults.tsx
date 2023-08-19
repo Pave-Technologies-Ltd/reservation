@@ -10,6 +10,7 @@ import Spinner from "../utilities/Spinner";
 import PropertyType from "../Types/Property.types";
 
 import { Booking_API } from "../utilities/api";
+import TopBar from "../Components/TopBar";
 
 const SearchResults = () => {
   const navigate = useNavigate();
@@ -94,19 +95,11 @@ const SearchResults = () => {
         children_number == "0" ? "1" : children_number
       ) as never
     );
-  });
+  },[]);
 
-  
   return (
     <div className=" w-full h-full flex flex-col">
-      <div
-        className="bg-background md:px-[10%] px-[5%] flex items-center h-[70px] cursor-pointer"
-        onClick={() => {
-          navigate("/");
-        }}
-      >
-        <div className="font-bold text-3xl text-white ">Reservation.com</div>
-      </div>
+      <TopBar />
 
       <div className="md:px-[10%] px-[5%] border w-[100%]  gap-4 mt-[5%] flex flex-col ">
         <div className=" border w-[100%] h-full gap-4 mt-[5%] flex">
@@ -129,7 +122,6 @@ const SearchResults = () => {
               </div>
 
               {properties.map((property) => (
-                
                 <div key={property.hotel_id}>
                   <Property property={property} />
                 </div>
