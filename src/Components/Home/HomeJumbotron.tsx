@@ -39,7 +39,7 @@ const HomeJumbotron = () => {
         </div>
 
         <div className="flex gap-2">
-          <button
+          {/* <button
             className="md:p-2 p-1 md:px-10 px-2 rounded-full font-medium text-white border transition-all duration-400 ease-in border-white hover:text-background hover:bg-white"
             onClick={() => {
               navigate("/sign-in");
@@ -54,7 +54,7 @@ const HomeJumbotron = () => {
             }}
           >
             Sign in
-          </button>
+          </button> */}
         </div>
       </div>
       {/* <div className="flex gap-2 mt-[5%]">

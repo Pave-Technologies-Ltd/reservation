@@ -1,11 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import PropertyType from "../../Types/Property.types";
+import CapitalizeFirstLetter from "../../utilities/CapitalizeFirstLetter";
 import truncateString from "../../utilities/truncateString";
+import Check from "../../assets/Check";
 
 interface PropertyComponentType {
   property: PropertyType;
 }
 
 const Property = ({ property }: PropertyComponentType) => {
+  const navigate = useNavigate();
   return (
     <div className="h-[200px] w-full border p-4 flex mb-4 gap-4">
       <div
@@ -17,17 +21,33 @@ const Property = ({ property }: PropertyComponentType) => {
       <div className="border w-[60%] h-full flex flex-col">
         <div className="flex  justify-between gap-4 ">
           <div className="flex flex-col gap-2">
-            <h1 className=" text-background font-bold">
-              {property.hotel_name}
-            </h1>
+            {property.hotel_name != undefined && (
+              <h1 className=" text-background font-bold">
+                {CapitalizeFirstLetter(property.hotel_name)}
+              </h1>
+            )}
 
-            <p className="text-xs ">
-              {truncateString(property.description as string)}
-            </p>
+            {property.description != undefined && (
+              <p className="text-xs ">{truncateString(property.description)}</p>
+            )}
+            <div className=" border-l ml-4 pl-2">
+              {property.is_free_cancellable === 1 && (
+                <div className="gap-2 flex items-center">
+                  <Check />
+                  <p className="text-xs">Free cancellation</p>
+                </div>
+              )}
+              {property.is_no_prepayment_block === 1 && (
+                <div className="gap-2 flex items-center">
+                  <Check />
+                  <p className="text-xs">No prepayment needed</p>
+                </div>
+              )}
+            </div>
           </div>
 
-          <div className="flex flex-col gap-2">
-            <div className="flex">
+          <div className="flex flex-col gap-2 ">
+            <div className="flex gap-2">
               <div className="flex flex-col">
                 <p>{property.review_score_word}</p>
                 <p className="text-xs">{`${property.review_nr} reviews`}</p>
@@ -37,7 +57,12 @@ const Property = ({ property }: PropertyComponentType) => {
               </div>
             </div>
             <div>
-              <button className="text-white font-bold bg-background p-2 flex items-center justify-center w-[100%]">
+              <button
+                onClick={() => {
+                  navigate(`/property/${property.hotel_id}`);
+                }}
+                className="text-white font-bold bg-background p-2 hover:bg-lightbackground flex items-center justify-center w-[100px]"
+              >
                 View
               </button>
             </div>

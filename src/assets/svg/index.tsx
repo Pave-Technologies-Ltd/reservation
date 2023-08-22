@@ -1,4 +1,5 @@
 export { default as Home } from "../Home";
+export { default as Check } from "../Check";
 export { default as Location } from "../Location";
 export { default as CalenderIcon } from "../CalenderIcon";
 export { default as PlusIcon } from "../PlusIcon";

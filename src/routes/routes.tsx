@@ -3,7 +3,8 @@ import {
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
-import { Contact, Home, Layout, Login, SearchResults, Stays } from "../Screens";
+import { Contact, Home, Layout, Login, SearchResults, SingleProperty, Stays } from "../Screens";
+
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -14,6 +15,7 @@ export const router = createBrowserRouter(
 
       <Route path="/sign-in" element={<Login />} />
       <Route path="/searchresults" element={<SearchResults />} />
+      <Route path='/property/:propertyId' element={<SingleProperty/>} />
     </Route>
   )
 );

@@ -9,7 +9,7 @@ import Spinner from "../utilities/Spinner";
 
 import PropertyType from "../Types/Property.types";
 
-import { Booking_API } from "../utilities/api";
+// import { Booking_API } from "../utilities/api";
 import TopBar from "../Components/TopBar";
 
 const SearchResults = () => {
@@ -41,43 +41,44 @@ const SearchResults = () => {
       if (typeof serverResponse?.result === "undefined") {
         return;
       } else {
-        const finalProperties: PropertyType[] = [];
+        // const finalProperties: PropertyType[] = [];
         const initialProperties = Object.values(
           serverResponse?.result as PropertyType[]
         );
 
-        const loopFunction = async () => {
-          for (const hotel of initialProperties) {
-            const config = {
-              params: {
-                hotel_id: hotel.hotel_id,
-                locale: "en-gb",
-              },
-              headers: {
-                "X-RapidAPI-Key":
-                  "58384481e7mshce8cc708fd6414ap1f6838jsna9f2faf27f7c",
-                "X-RapidAPI-Host": "booking-com.p.rapidapi.com",
-              },
-            };
+        // const loopFunction = async () => {
+        //   for (const hotel of initialProperties) {
+        //     const config = {
+        //       params: {
+        //         hotel_id: hotel.hotel_id,
+        //         locale: "en-gb",
+        //       },
+        //       headers: {
+        //         "X-RapidAPI-Key":
+        //           "58384481e7mshce8cc708fd6414ap1f6838jsna9f2faf27f7c",
+        //         "X-RapidAPI-Host": "booking-com.p.rapidapi.com",
+        //       },
+        //     };
 
-            const { data } = await Booking_API.get(
-              `/hotels/description`,
-              config
-            );
+        //     const { data } = await Booking_API.get(
+        //       `/hotels/description`,
+        //       config
+        //     );
 
-            const hotelWithDescription = {
-              ...hotel,
-              description: data.description,
-            };
+        //     const hotelWithDescription = {
+        //       ...hotel,
+        //      description: data.description,
+        //     };
 
-            finalProperties.push(hotelWithDescription);
-          }
-          return finalProperties;
-        };
+        //     finalProperties.push(hotelWithDescription);
+        //   }
+        //   return finalProperties;
+        // };
 
-        const propertiesWithDescription = await loopFunction();
+        // const propertiesWithDescription = await loopFunction();
 
-        setProperties(propertiesWithDescription);
+        // setProperties(propertiesWithDescription);
+        setProperties(initialProperties);
       }
     };
     effectFunction();
@@ -96,6 +97,8 @@ const SearchResults = () => {
       ) as never
     );
   },[]);
+
+  // console.log(properties)
 
   return (
     <div className=" w-full h-full flex flex-col">
