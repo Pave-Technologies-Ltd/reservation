@@ -7,16 +7,22 @@ import {
 } from "./reducers/hotels.reducer";
 import { getLocationsByNameReducer } from "./reducers/locationsByName.reducer";
 import { getHotelDescriptionReducer } from "./reducers/hoteldescription.reducer";
+import { getHotelPhotosReducer } from "./reducers/hotelsPhotos.reducer";
+import { getSingleHotelReducer } from "./reducers/singleHotel.reducer";
 
 export type ReducersType = {
   hotels: reservationsResponseType;
   locations: reservationsResponseType;
   hotelDescription:reservationsResponseType
+  hotelPhotos:reservationsResponseType
+  singleHotel:reservationsResponseType
 };
 const reducer = combineReducers({
   hotels: getHotelsReducer,
   locations: getLocationsByNameReducer,
-  hotelDescription:getHotelDescriptionReducer
+  hotelDescription:getHotelDescriptionReducer,
+  hotelPhotos:getHotelPhotosReducer,
+  singleHotel:getSingleHotelReducer
 });
 
 const middleware = [thunk];

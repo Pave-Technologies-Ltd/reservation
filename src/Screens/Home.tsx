@@ -93,6 +93,7 @@ const Home = () => {
           <Slider data={PropertyTypes} />
         </div>
         <Subscribe />
+        
       </div>
     </>
   );
