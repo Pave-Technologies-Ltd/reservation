@@ -9,6 +9,7 @@ import { reservationsResponseType } from "../../redux/reducers/hotels.reducer";
 import { DayValue } from "@hassanmojab/react-modern-calendar-datepicker";
 import CalenderInput from "../CalenderInput";
 import UserInput from "../UserInput";
+import { useSearchParams } from "react-router-dom";
 
 interface SearchBarType {
   searchButtonHandler: (e: {
@@ -24,6 +25,8 @@ interface SearchBarType {
 }
 
 const SearchBar = ({ searchButtonHandler }: SearchBarType) => {
+  const [searchParams] = useSearchParams();
+  const cityName = searchParams.get("CN") as string;
   const dispatch = useDispatch();
 
   type selectedDateRangeType = {
@@ -186,14 +189,14 @@ const checkOutDate = `${selectedDayRange?.to?.year}-${selectedDayRange?.to?.mont
     // console.log(allLocations.serverResponse);
 
   return (
-    <div className=" text-background absolute left-0 top-[330px] md:px-[10%] px-[5%] w-[100%]  h-[60px] ">
+    <div className=" text-background absolute left-0 top-[120px] md:px-[10%] px-[5%] w-[100%]  h-[60px] ">
       <div className=" flex md:flex-nowrap flex-wrap h-full">
         <LocationInput
           loading={allLocations.loading}
           selectLocationHandler={selectLocationHandler}
           locationSearchTerm={locationSearchTerm}
           locations={data}
-          selectedLocation={selectedLocation}
+          selectedLocation={selectedLocation || cityName}
           locationModalFocusHandler={locationModalFocusHandler}
           locationModalRef={locationModalRef}
           showLocationModal={showLocationModal}
@@ -225,7 +228,7 @@ const checkOutDate = `${selectedDayRange?.to?.year}-${selectedDayRange?.to?.mont
             checkout_date: checkOutDate,
             children_number: children.toString(),
             dest_id: locationDetails?.dest_id,
-            city_name:locationDetails?.city_name
+            city_name: locationDetails?.city_name,
           })}
           className="md:w-[10%] w-[100%] border-4 border-lightbackground h-full bg-background hover:bg-lightbackground text-white font-bold"
         >

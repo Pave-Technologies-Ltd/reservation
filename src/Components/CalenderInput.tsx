@@ -3,6 +3,7 @@ import CalenderIcon from "../assets/CalenderIcon";
 import Calender from "./Calender/Calender";
 import { RefObject } from "react";
 import getMonth from "../utilities/getMonth";
+import { useSearchParams } from "react-router-dom";
 interface CalenderInputType {
   showCalender: boolean;
   selectedDayRange: selectedDateRangeType;
@@ -23,10 +24,16 @@ const CalenderInput = ({
   calenderClickHandler,
   calenderModalRef,
 }: CalenderInputType) => {
+
+    const [searchParams] = useSearchParams();
+    const checkin_date = searchParams.get("checkin_date") as string;
+    const checkout_date = searchParams.get("checkout_date") as string;
+
+    
   
   const from = `${selectedDayRange.from?.year}-${getMonth(
     selectedDayRange.from?.month as number
-  )}-${selectedDayRange.from?.day}`;
+  )}-${selectedDayRange.from?.day}` 
   const to = `${selectedDayRange.to?.year}-${getMonth(
     selectedDayRange.to?.month as number
   )}-${selectedDayRange.to?.day}`;
@@ -43,8 +50,8 @@ const CalenderInput = ({
         <div
           onClick={calenderClickHandler}
           className=" cursor-pointer  font-medium  pl-8 py-2  h-full w-full text-sm text-[#262626]"
-        >{`${selectedDayRange.from === null ? "Check-in date" : from} - ${
-          selectedDayRange.to === null ? "Check-out date" : to
+        >{`${selectedDayRange.from === null && checkin_date === null ? "Check-in date" : checkin_date || from } - ${
+          selectedDayRange.to === null && checkout_date === null ? "Check-out date" : checkout_date || to
         }`}</div>
       </div>
       {showCalender && (

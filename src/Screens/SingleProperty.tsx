@@ -14,6 +14,7 @@ import SinglePropertyType from "../Types/SingleProperty.types";
 import SkeletonLoader from "../Components/SkeletonLoader";
 import Location from "../assets/Location";
 import { getHotelDescriptionAction } from "../redux/actions/hotelsdescription";
+import CapitalizeFirstLetter from "../utilities/CapitalizeFirstLetter";
 
 const SingleProperty = () => {
   const dispatch = useDispatch();
@@ -52,13 +53,18 @@ const SingleProperty = () => {
     <div className="">
       <TopBar />
 
-      <div className="flex flex-col">
+      <div className="flex flex-col mt-[5%]">
         <div className="    p-4 md:px-[10%] px-[5%] w-full mx-auto">
           {singleHotelResponse.loading ? (
             <SkeletonLoader />
           ) : (
             <div className="">
-              <h1 className="font-bold">{singlePropertyData.name}</h1>
+              {singlePropertyData.name != undefined && (
+
+              <h1 className="font-bold">
+                {CapitalizeFirstLetter(singlePropertyData.name )}
+              </h1>
+              )}
               <div className="flex gap-2 items-center">
                 <Location />
                 <p className="text-xs">{singlePropertyData.address}</p>

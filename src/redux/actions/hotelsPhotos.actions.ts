@@ -21,7 +21,7 @@ export const getHotelPhotosAction =
         },
         headers: {
           "X-RapidAPI-Key":
-            "58384481e7mshce8cc708fd6414ap1f6838jsna9f2faf27f7c",
+            "99e37fd0ebmsh09bd11709ed4f54p103a11jsn59e0a8d93005",
           "X-RapidAPI-Host": "booking-com.p.rapidapi.com",
         },
       };

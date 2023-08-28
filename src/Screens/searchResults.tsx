@@ -12,6 +12,7 @@ import PropertyType from "../Types/Property.types";
 // import { Booking_API } from "../utilities/api";
 import TopBar from "../Components/TopBar";
 import Checkbox from "../Components/Checkbox";
+// import SearchBar from "../Components/Home/SearchBar";
 
 const SearchResults = () => {
   // const navigate = useNavigate();
@@ -37,11 +38,10 @@ const SearchResults = () => {
 
   const serverResponse = hotelsResponse.serverResponse as serverResponseType;
 
-
- const [isChecked, setIsChecked] = useState(false);
- const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-   setIsChecked(e.target.checked);
- };
+  const [isChecked, setIsChecked] = useState(false);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIsChecked(e.target.checked);
+  };
 
   useEffect(() => {
     const effectFunction = async () => {
@@ -92,7 +92,7 @@ const SearchResults = () => {
   }, [serverResponse?.result]);
 
   useEffect(() => {
-    setProperties([])
+    setProperties([]);
     dispatch(
       getHotelsAction(
         room,
@@ -104,10 +104,10 @@ const SearchResults = () => {
         children_number == "0" ? "1" : children_number
       ) as never
     );
-  },[]);
+  }, []);
 
   //  console.log(properties)
-
+  
 
   return (
     <div className=" w-full h-full flex flex-col">
@@ -122,7 +122,7 @@ const SearchResults = () => {
               isChecked={isChecked}
             />
           </div>
-          {properties.length === 0  ? (
+          {properties.length === 0 ? (
             <div className="border flex items-center w-full justify-center">
               <Spinner size="large" />
             </div>
