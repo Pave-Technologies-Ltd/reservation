@@ -1,18 +1,25 @@
 // import { useDispatch } from "react-redux";
-import Destination from "../Components/Home/Destination";
+
 // import HomeJumbotron from "../Components/Home/HomeJumbotron";
+// import axios from "axios";
+import Destination from "../Components/Home/Destination";
 import Offer from "../Components/Home/Offer";
 
 // import SearchBar from "../Components/Home/SearchBar";
 import Subscribe from "../Components/Home/Subscribe";
 import Slider from "../Components/Slider";
 import TopBar from "../Components/TopBar";
+import { DestinationType } from "../Types/DestinationType.types";
 import PropertyTypes from "../mock/PropertyTypes";
+
 // import { useNavigate } from "react-router-dom";
 
 // import { getHotelsAction } from "../redux/actions/hotels.actions";
 
+
 const Home = () => {
+  // const [latitude, setLatitude] = useState("");
+  // const [longitude, setLongitude] = useState("");
   // const navigate = useNavigate();
 
   // const dispatch = useDispatch();
@@ -58,14 +65,57 @@ const Home = () => {
   //   });
   // };
 
+  (async () => {
+    try {
+      // const res = await axios.get(
+      //   "https://extreme-ip-lookup.com/json/?key=S8L2NUVgp0XJQcjRRsy0"
+      // );
+      // console.log(res.data);
+      // setLatitude(res.data.lat);
+      // setLongitude(res.data.lon)
+      // console.log(
+      //   `User's location: Latitude ${latitude}, Longitude ${longitude}`
+      // );
+    } catch (error) {
+      console.error("Error getting user location:", error);
+    }
+  })();
+
+  const trendingDestinations: DestinationType[] = [
+    {
+      image: "dubai.jpg",
+      destination: "Dubai",
+      url: "",
+      flag: "dubaiFlag.svg",
+    },
+    {
+      image: "paris.jpeg",
+      destination: "Paris",
+      url: "",
+      flag: "franceFlag.svg",
+    },
+    {
+      image: "london.jpeg",
+      destination: "London",
+      url: "",
+      flag: "londonFlag.svg",
+    },
+    {
+      image: "lagos.jpeg",
+      destination: "Lagos",
+      url: "",
+      flag: "nigeriaFlag.svg",
+    },
+  ];
+
   return (
     <>
       <div className="">
-        <TopBar/>
+        <TopBar />
         {/* <HomeJumbotron />
         <SearchBar searchButtonHandler={SearchButtonHandler} /> */}
         {/* Offers */}
-        <div className="md:px-[10%] px-[5%] md:mt-[5%] mt-[30%]">
+        <div className="md:px-[10%] px-[5%] lg:mt-[5%] mt-[50%]">
           <h1 className="text-3xl font-semibold">Offers</h1>
           <h6 className="text-md text-[#6b9ccf]">
             Promotions, deals and special offers for you
@@ -78,14 +128,16 @@ const Home = () => {
         {/* Destinations */}
         <div className="md:px-[10%] px-[5%] md:mt-[5%] mt-[10%]">
           <h1 className="text-3xl font-semibold">Trending Destinations</h1>
-          <h6 className="text-md text-[#6b9ccf]">
+          {/* <h6 className="text-md text-[#6b9ccf]">
             Most popular choices for travellers from Nigeria
-          </h6>
+          </h6> */}
           <div className=" grid md:grid-cols-2 grid-cols-1  gap-6 mt-4">
-            <Destination />
-            <Destination />
-            <Destination />
-            <Destination />
+            {trendingDestinations.map((destination) => (
+              <Destination
+                key={destination.destination}
+                destination={destination}
+              />
+            ))}
           </div>
         </div>
         {/* Property Type */}

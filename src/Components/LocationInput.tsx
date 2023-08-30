@@ -32,7 +32,7 @@ const LocationInput = ({
 }: LocationInputType) => {
   //  console.log(locations)
   return (
-    <div className="relative md:w-[30%] w-[100%] h-full">
+    <div className="relative lg:w-[30%] w-[100%] h-full">
       <div className="relative  w-[100%] h-full border-4 border-lightbackground p-2  bg-white flex items-center">
         <div className="absolute mx-1">
           <Home stroke="#6f00e7" />

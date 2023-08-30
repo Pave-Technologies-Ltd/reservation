@@ -1,16 +1,32 @@
+import { useNavigate } from "react-router-dom";
+import { DestinationType } from "../../Types/DestinationType.types";
 
-
-const Destination = () => {
-  return (
-    <div
-      className="h-[260px] p-4 w-full basis-1/2 border hover:border-yellow-400 cursor-pointer "
-      style={{
-        background: "url('src/assets/nigeria.jpg')",
-      }}
-    >
-        <h1 className="text-white font-bold text-2xl ">Nigeria</h1>
-    </div>
-  );
+interface DestinationComponentType {
+  destination: DestinationType;
 }
 
-export default Destination
+const Destination = ({ destination }: DestinationComponentType) => {
+  const navigate = useNavigate();
+  return (
+    <div
+      className="relative"
+      onClick={() => {
+        navigate("");
+      }}
+    >
+      <img
+        src={destination.image}
+        className={`h-[260px]   w-full basis-1/2 border  hover:border-yellow-400 cursor-pointer `}
+      ></img>
+
+      <div className="absolute flex gap-4 top-6 left-4 items-center">
+        <h1 className="text-white  font-bold text-2xl  ">
+          {destination.destination}
+        </h1>
+        <img className="w-8 h-8" src={destination.flag} alt="" />
+      </div>
+    </div>
+  );
+};
+
+export default Destination;

@@ -190,7 +190,7 @@ const checkOutDate = `${selectedDayRange?.to?.year}-${selectedDayRange?.to?.mont
 
   return (
     <div className=" text-background absolute left-0 top-[120px] md:px-[10%] px-[5%] w-[100%]  h-[60px] ">
-      <div className=" flex md:flex-nowrap flex-wrap h-full">
+      <div className=" flex lg:flex-nowrap flex-wrap h-full">
         <LocationInput
           loading={allLocations.loading}
           selectLocationHandler={selectLocationHandler}
@@ -230,7 +230,7 @@ const checkOutDate = `${selectedDayRange?.to?.year}-${selectedDayRange?.to?.mont
             dest_id: locationDetails?.dest_id,
             city_name: locationDetails?.city_name,
           })}
-          className="md:w-[10%] w-[100%] border-4 border-lightbackground h-full bg-background hover:bg-lightbackground text-white font-bold"
+          className="lg:w-[10%] w-[100%] border-4 border-lightbackground h-full bg-background hover:bg-lightbackground text-white font-bold"
         >
           Search
         </button>

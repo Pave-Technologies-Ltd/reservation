@@ -16,6 +16,7 @@ import Location from "../assets/Location";
 import { getHotelDescriptionAction } from "../redux/actions/hotelsdescription";
 import CapitalizeFirstLetter from "../utilities/CapitalizeFirstLetter";
 
+
 const SingleProperty = () => {
   const dispatch = useDispatch();
 
@@ -60,10 +61,9 @@ const SingleProperty = () => {
           ) : (
             <div className="">
               {singlePropertyData.name != undefined && (
-
-              <h1 className="font-bold">
-                {CapitalizeFirstLetter(singlePropertyData.name )}
-              </h1>
+                <h1 className="font-bold">
+                  {CapitalizeFirstLetter(singlePropertyData.name)}
+                </h1>
               )}
               <div className="flex gap-2 items-center">
                 <Location />
@@ -80,6 +80,7 @@ const SingleProperty = () => {
           ) : (
             <div className=" ">
               <Carousel photos={photos} />
+              {/* <ImageGallery items={photos} /> */}
             </div>
           )}
 

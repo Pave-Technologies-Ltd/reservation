@@ -2,7 +2,7 @@
 
 const Offer = () => {
   return (
-    <div className=" h-[180px] flex w-[550px] shadow-md">
+    <div className=" h-[180px] flex lg:w-[550px] w-full shadow-md">
       <div className="w-[70%] border p-6 flex flex-col justify-between ">
         <h1>Take your longest holiday yet</h1>
         <p>
