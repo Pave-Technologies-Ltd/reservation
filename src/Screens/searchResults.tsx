@@ -122,7 +122,7 @@ const SearchResults = () => {
               isChecked={isChecked}
             />
           </div>
-          {properties.length === 0 ? (
+          {hotelsResponse.loading ? (
             <div className="border flex items-center w-full justify-center">
               <Spinner size="large" />
             </div>
@@ -133,7 +133,9 @@ const SearchResults = () => {
                   ""
                 ) : (
                   <h1 className="font-bold">
-                    {`${cityName.toUpperCase()}: ${serverResponse?.count}`}{" "}
+                    {`${cityName.toUpperCase()}: ${
+                      serverResponse?.total_count_with_filters
+                    }`}{" "}
                     properties found
                   </h1>
                 )}

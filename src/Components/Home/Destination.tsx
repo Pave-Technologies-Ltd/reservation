@@ -11,7 +11,10 @@ const Destination = ({ destination }: DestinationComponentType) => {
     <div
       className="relative"
       onClick={() => {
-        navigate("");
+        navigate({
+          pathname: "/searchResults",
+          search: `?CN=${destination.searchOptions.city_name}&room=${destination.searchOptions.room}&adult=${destination.searchOptions.adult}&children_number=${destination.searchOptions.children_number}&checkin_date=${destination.searchOptions.checkin_date}&checkout_date=${destination.searchOptions.checkout_date}&dest_type=${destination.searchOptions.dest_type}&dest_id=${destination.searchOptions.dest_id}`,
+        });
       }}
     >
       <img

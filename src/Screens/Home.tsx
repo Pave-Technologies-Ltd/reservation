@@ -12,10 +12,10 @@ import TopBar from "../Components/TopBar";
 import { DestinationType } from "../Types/DestinationType.types";
 import PropertyTypes from "../mock/PropertyTypes";
 
+
 // import { useNavigate } from "react-router-dom";
 
 // import { getHotelsAction } from "../redux/actions/hotels.actions";
-
 
 const Home = () => {
   // const [latitude, setLatitude] = useState("");
@@ -81,32 +81,94 @@ const Home = () => {
     }
   })();
 
+   const todaysDate = new Date();
+   const sevensDayDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+
+   const day = todaysDate.getDate();
+   
+   const month = todaysDate.getMonth() + 1;
+   const year = todaysDate.getFullYear();
+
+
+   const sevensDay =sevensDayDate.getDate()
+   const sevensDayMonth = sevensDayDate.getMonth() + 1
+   const sevensDayYear = sevensDayDate.getFullYear()
+
+   // This arrangement can be altered based on how we want the date's format to appear.
+   const currentDate = `${year}-${month}-${day}`;
+
+  const nextDate = `${sevensDayYear}-${sevensDayMonth}-${sevensDay}`;
+   
+
   const trendingDestinations: DestinationType[] = [
     {
       image: "dubai.jpg",
       destination: "Dubai",
       url: "",
       flag: "dubaiFlag.svg",
+      searchOptions: {
+        dest_id: "-782831",
+        dest_type: "city",
+        adult: "1",
+        children_number: "1",
+        checkin_date: `${currentDate}`,
+        checkout_date: `${nextDate}`,
+        room: "1",
+        city_name: "Dubai",
+      },
     },
     {
       image: "paris.jpeg",
       destination: "Paris",
       url: "",
       flag: "franceFlag.svg",
+      searchOptions: {
+        dest_id: "-1456928",
+        dest_type: "city",
+        adult: "1",
+        children_number: "1",
+        checkin_date: `${currentDate}`,
+        checkout_date: `${nextDate}`,
+        room: "1",
+        city_name: "Paris",
+      },
     },
     {
       image: "london.jpeg",
       destination: "London",
       url: "",
       flag: "londonFlag.svg",
+      searchOptions: {
+        dest_id: "-2601889",
+        dest_type: "city",
+        adult: "1",
+        children_number: "1",
+        checkin_date: `${currentDate}`,
+        checkout_date: `${nextDate}`,
+        room: "1",
+        city_name: "London",
+      },
     },
     {
       image: "lagos.jpeg",
       destination: "Lagos",
       url: "",
       flag: "nigeriaFlag.svg",
+      searchOptions: {
+        dest_id: "-2017355",
+        dest_type: "city",
+        adult: "1",
+        children_number: "1",
+        checkin_date: `${currentDate}`,
+        checkout_date: `${nextDate}`,
+        room: "1",
+        city_name: "Lagos",
+      },
     },
   ];
+
+
+
 
   return (
     <>
@@ -115,7 +177,7 @@ const Home = () => {
         {/* <HomeJumbotron />
         <SearchBar searchButtonHandler={SearchButtonHandler} /> */}
         {/* Offers */}
-        <div className="md:px-[10%] px-[5%] lg:mt-[5%] mt-[50%]">
+        <div className="md:px-[10%] px-[5%] lg:mt-[5%] md:mt-[40%] mt-[50%]">
           <h1 className="text-3xl font-semibold">Offers</h1>
           <h6 className="text-md text-[#6b9ccf]">
             Promotions, deals and special offers for you
