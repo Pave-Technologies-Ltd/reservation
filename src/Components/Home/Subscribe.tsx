@@ -8,7 +8,7 @@ const Subscribe = () => {
         <h4 className="text-[#bd9b84]">
           Sign up and we'll send the best deals to you
         </h4>
-        <div className="flex md:flex-nowrap flex-wrap  justify-center h-[60px] mt-2 gap-2">
+        <div className="flex md:flex-nowrap flex-wrap px-4 justify-center h-[60px] mt-2 gap-2">
           <input
             placeholder="Your email address"
             type="text"
