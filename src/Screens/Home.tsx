@@ -3,7 +3,7 @@
 // import HomeJumbotron from "../Components/Home/HomeJumbotron";
 // import axios from "axios";
 import Destination from "../Components/Home/Destination";
-import Offer from "../Components/Home/Offer";
+// import Offer from "../Components/Home/Offer";
 
 // import SearchBar from "../Components/Home/SearchBar";
 import Subscribe from "../Components/Home/Subscribe";
@@ -177,7 +177,7 @@ const Home = () => {
         {/* <HomeJumbotron />
         <SearchBar searchButtonHandler={SearchButtonHandler} /> */}
         {/* Offers */}
-        <div className="md:px-[10%] px-[5%] lg:mt-[5%] md:mt-[40%] mt-[50%]">
+        {/* <div className="md:px-[10%] px-[5%] lg:mt-[5%] md:mt-[40%] mt-[50%]">
           <h1 className="text-3xl font-semibold">Offers</h1>
           <h6 className="text-md text-[#6b9ccf]">
             Promotions, deals and special offers for you
@@ -186,9 +186,9 @@ const Home = () => {
             <Offer />
             <Offer />
           </div>
-        </div>
+        </div> */}
         {/* Destinations */}
-        <div className="md:px-[10%] px-[5%] md:mt-[5%] mt-[10%]">
+        <div className="md:px-[10%] px-[5%] md:mt-[5%] mt-[50%]">
           <h1 className="text-3xl font-semibold">Trending Destinations</h1>
           {/* <h6 className="text-md text-[#6b9ccf]">
             Most popular choices for travellers from Nigeria
