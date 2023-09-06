@@ -54,7 +54,7 @@ const SingleProperty = () => {
     <div className="">
       <TopBar />
 
-      <div className="flex flex-col mt-[5%]">
+      <div className="flex flex-col md:mt-[5%] mt-[60%]">
         <div className="    p-4 md:px-[10%] px-[5%] w-full mx-auto">
           {singleHotelResponse.loading ? (
             <SkeletonLoader />
