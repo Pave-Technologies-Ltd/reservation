@@ -188,7 +188,7 @@ const Home = () => {
           </div>
         </div> */}
         {/* Destinations */}
-        <div className="md:px-[10%] px-[5%] md:mt-[5%] mt-[50%]">
+        <div className="md:px-[10%] px-[5%] md:mt-[5%] mt-[60%]">
           <h1 className="text-3xl font-semibold">Trending Destinations</h1>
           {/* <h6 className="text-md text-[#6b9ccf]">
             Most popular choices for travellers from Nigeria
