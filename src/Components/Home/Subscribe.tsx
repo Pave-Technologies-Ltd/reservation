@@ -12,7 +12,7 @@ const Subscribe = () => {
           <input
             placeholder="Your email address"
             type="text"
-            className="placeholder:text-lg  p-2 w-[400px] outline-none text-black"
+            className="placeholder:text-lg  p-2 w-[100%] outline-none text-black"
           />
           <button className=" bg-lightbackground h-[60px] w-[200px] ">
             Subscribe
