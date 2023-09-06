@@ -32,7 +32,7 @@ const LocationInput = ({
 }: LocationInputType) => {
   //  console.log(locations)
   return (
-    <div className="relative lg:w-[30%] w-[100%] h-full">
+    <div className="relative lg:w-[30%] w-[100%] h-full z-10">
       <div className="relative  w-[100%] h-full border-4 border-lightbackground p-2  bg-white flex items-center">
         <div className="absolute mx-1">
           <Home stroke="#6f00e7" />
@@ -68,7 +68,7 @@ const LocationInput = ({
                     name: string;
                     dest_type: string;
                     dest_id: string;
-                    city_name:string
+                    city_name: string;
                   },
                   index
                 ) => (
@@ -77,7 +77,7 @@ const LocationInput = ({
                       dest_type: location.dest_type,
                       dest_id: location.dest_id,
                       label: location.label,
-                      city_name:location.city_name
+                      city_name: location.city_name,
                     })}
                     key={index}
                     className="border px-2 gap-2 items-center flex h-[50px] w-[100%] hover:bg-[#f0f0f0] cursor-pointer"

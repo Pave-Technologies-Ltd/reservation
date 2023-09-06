@@ -11,18 +11,18 @@ interface PropertyComponentType {
 const Property = ({ property }: PropertyComponentType) => {
   const navigate = useNavigate();
   return (
-    <div className="h-[200px] w-full border p-4 flex mb-4 gap-4">
+    <div className="h-[200px] w-full border rounded-md p-4 flex mb-4 gap-4">
       <div
-        className="border w-[40%] h-full bg-cover bg-center rounded-md"
+        className=" w-[40%] h-full bg-cover bg-center rounded-md"
         style={{
           backgroundImage: `url(${property.max_photo_url})`,
         }}
       ></div>
-      <div className="border w-[60%] h-full flex flex-col">
+      <div className=" w-[60%] h-full flex flex-col">
         <div className="flex  justify-between gap-4 ">
           <div className="flex flex-col gap-2">
             {property.hotel_name != undefined && (
-              <h1 className=" text-background font-bold">
+              <h1 className="text-sm text-background font-bold">
                 {CapitalizeFirstLetter(property.hotel_name)}
               </h1>
             )}
@@ -30,7 +30,7 @@ const Property = ({ property }: PropertyComponentType) => {
             {property.description != undefined && (
               <p className="text-xs ">{truncateString(property.description)}</p>
             )}
-            <div className=" border-l ml-4 pl-2">
+            <div className=" border-l  pl-2">
               {property.is_free_cancellable === 1 && (
                 <div className="gap-2 flex items-center">
                   <Check />

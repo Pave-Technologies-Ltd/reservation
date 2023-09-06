@@ -23,7 +23,7 @@ const UserInput = ({
   UserInputHandler,
 }: UserInputType) => {
   return (
-    <div className="relative lg:w-[30%] w-[100%] h-full ">
+    <div className="relative lg:w-[30%] w-[100%] h-full z-10">
       <div
         onClick={showUserModalHandler}
         className="relative  w-[100%] h-full border-4 border-lightbackground p-2 cursor-pointer bg-white flex items-center"

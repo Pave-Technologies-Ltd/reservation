@@ -113,9 +113,9 @@ const SearchResults = () => {
     <div className=" w-full h-full flex flex-col">
       <TopBar />
 
-      <div className="md:px-[10%] px-[5%] border w-[100%]  gap-4 mt-[5%] flex flex-col ">
-        <div className=" border w-[100%] h-full gap-4 mt-[5%] flex">
-          <div className="border w-[30%] h-full">
+      <div className="md:px-[10%] px-[5%]  w-[100%]  gap-4 md:mt-[5%] mt-[60%] flex flex-col ">
+        <div className="  w-[100%] h-full md:gap-4 gap-0 mt-[5%] flex">
+          <div className="border md:visible invisible md:w-[20%] w-0 h-full">
             <Checkbox
               label="Hotel"
               handleChange={handleChange}
@@ -123,11 +123,11 @@ const SearchResults = () => {
             />
           </div>
           {hotelsResponse.loading ? (
-            <div className="border flex items-center w-full justify-center">
+            <div className=" flex items-center w-full justify-center">
               <Spinner size="large" />
             </div>
           ) : (
-            <div className="border w-[100%] h-full p-4">
+            <div className=" md:w-[80%] w-[100%] h-full md:p-4 p-0">
               <div>
                 {hotelsResponse.loading ? (
                   ""
