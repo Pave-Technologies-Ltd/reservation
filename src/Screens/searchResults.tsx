@@ -12,6 +12,7 @@ import PropertyType from "../Types/Property.types";
 // import { Booking_API } from "../utilities/api";
 import TopBar from "../Components/TopBar";
 import Checkbox from "../Components/Checkbox";
+// import Pagination from "../Components/Pagination";
 // import SearchBar from "../Components/Home/SearchBar";
 
 const SearchResults = () => {
@@ -106,14 +107,13 @@ const SearchResults = () => {
     );
   }, []);
 
-  //  console.log(properties)
-  
+    // console.log(serverResponse)
 
   return (
     <div className=" w-full h-full flex flex-col">
       <TopBar />
 
-      <div className="md:px-[10%] px-[5%]  w-[100%]  gap-4 md:mt-[5%] mt-[60%] flex flex-col ">
+      <div className="md:px-[10%] px-[5%]  w-[100%]  gap-4 md:mt-[6%] mt-[60%] flex flex-col ">
         <div className="  w-[100%] h-full md:gap-4 gap-0 mt-[5%] flex">
           <div className="border md:visible invisible md:w-[20%] w-0 h-full">
             <Checkbox
@@ -122,32 +122,49 @@ const SearchResults = () => {
               isChecked={isChecked}
             />
           </div>
-          {hotelsResponse.loading ? (
-            <div className=" flex items-center w-full justify-center">
-              <Spinner size="large" />
-            </div>
-          ) : (
-            <div className=" md:w-[80%] w-[100%] h-full md:p-4 p-0">
-              <div>
-                {hotelsResponse.loading ? (
-                  ""
-                ) : (
-                  <h1 className="font-bold">
-                    {`${cityName.toUpperCase()}: ${
-                      serverResponse?.total_count_with_filters
-                    }`}{" "}
-                    properties found
-                  </h1>
-                )}
-              </div>
 
-              {properties.map((property) => (
-                <div key={property.hotel_id}>
-                  <Property property={property} />
+          <div className="flex flex-col w-[100%]">
+            {hotelsResponse.loading ? (
+              <div className=" flex items-center w-full justify-center">
+                <Spinner size="large" />
+              </div>
+            ) : (
+              <div className="border  w-[100%] h-full md:p-4 p-0">
+                <div className="">
+                  {hotelsResponse.loading ? (
+                    ""
+                  ) : (
+                    <h1 className="font-bold">
+                      {`${cityName.toUpperCase()}: ${
+                        serverResponse?.total_count_with_filters
+                      }`}{" "}
+                      properties found
+                    </h1>
+                  )}
                 </div>
-              ))}
-            </div>
-          )}
+
+                {properties.map((property) => (
+                  <div key={property.hotel_id}>
+                    <Property property={property} />
+                  </div>
+                ))}
+
+                <div>
+                  {hotelsResponse.loading ? (
+                    ""
+                  ) : (
+                    <h1 className="font-normal">
+                      {`${cityName.toUpperCase()}: ${
+                        serverResponse?.total_count_with_filters
+                      }`}{" "}
+                      properties found
+                    </h1>
+                  )}
+                </div>
+              </div>
+            )}
+            {/* <Pagination /> */}
+          </div>
         </div>
       </div>
     </div>

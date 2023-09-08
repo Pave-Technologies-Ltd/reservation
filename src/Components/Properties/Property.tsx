@@ -19,8 +19,8 @@ const Property = ({ property }: PropertyComponentType) => {
         }}
       ></div>
       <div className=" w-[60%] h-full flex flex-col">
-        <div className="flex  justify-between gap-4 ">
-          <div className="flex flex-col gap-2">
+        <div className="flex md:flex-row  flex-col h-full gap-2  w-full">
+          <div className="flex flex-col gap-2  md:h-[100%] h-[50%]  md:w-[50%] w-[100%]">
             {property.hotel_name != undefined && (
               <h1 className="text-sm text-background font-bold">
                 {CapitalizeFirstLetter(property.hotel_name)}
@@ -46,8 +46,8 @@ const Property = ({ property }: PropertyComponentType) => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-2 ">
-            <div className="flex gap-2">
+          <div className="flex flex-col gap-2  md:h-[100%] h-[50%] md:w-[50%] w-[100%] ">
+            <div className="flex gap-2 w-full justify-between ">
               <div className="flex flex-col">
                 <p>{property.review_score_word}</p>
                 <p className="text-xs">{`${property.review_nr} reviews`}</p>
@@ -61,7 +61,7 @@ const Property = ({ property }: PropertyComponentType) => {
                 onClick={() => {
                   navigate(`/property/${property.hotel_id}`);
                 }}
-                className="text-white font-bold bg-background p-2 hover:bg-lightbackground flex items-center justify-center w-[100px]"
+                className="text-white font-bold bg-background p-2 hover:bg-lightbackground flex items-center justify-center w-[100%]"
               >
                 View
               </button>
