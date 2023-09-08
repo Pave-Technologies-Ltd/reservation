@@ -5,7 +5,7 @@ import SearchBar from "./Home/SearchBar";
 const TopBar = () => {
   
     const navigate = useNavigate();
-// const [searchParams,setSearchParams] =useSearchParams()
+//  const [searchParams,setSearchParams] =useSearchParams()
    const SearchButtonHandler = ({
      room,
      adult,
@@ -43,7 +43,7 @@ const TopBar = () => {
      }
 
     navigate(
-      `/searchResults/?CN=${city_name}&room=${room}&adult=${adult}&children_number=${children_number}&checkin_date=${checkin_date}&checkout_date=${checkout_date}&dest_type=${dest_type}&dest_id=${dest_id}`
+      `/searchResults?CN=${city_name}&room=${room}&adult=${adult}&children_number=${children_number}&checkin_date=${checkin_date}&checkout_date=${checkout_date}&dest_type=${dest_type}&dest_id=${dest_id}`
     );
     //  navigate({
     //    pathname: "/searchResults",
