@@ -11,7 +11,7 @@ interface PropertyComponentType {
 const Property = ({ property }: PropertyComponentType) => {
   const navigate = useNavigate();
   return (
-    <div className="h-[200px] w-full border rounded-md p-4 flex mb-4 gap-4">
+    <div className="h-[250px]  min-h-0 w-full border rounded-md p-4 flex mb-4 gap-4">
       <div
         className=" w-[40%] h-full bg-cover bg-center rounded-md"
         style={{
