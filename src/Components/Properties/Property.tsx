@@ -19,7 +19,7 @@ const Property = ({ property }: PropertyComponentType) => {
         }}
       ></div>
       <div className=" w-[60%] h-full flex flex-col">
-        <div className="flex md:flex-row  flex-col h-full gap-2  w-full">
+        <div className="flex md:flex-row  flex-col h-full gap-4  w-full">
           <div className="flex flex-col gap-2  md:h-[100%] h-[50%]  md:w-[50%] w-[100%]">
             {property.hotel_name != undefined && (
               <h1 className="text-sm text-background font-bold">
