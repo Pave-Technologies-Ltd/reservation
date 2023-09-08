@@ -14,8 +14,11 @@ export const router = createBrowserRouter(
       <Route path="/stay" element={<Stays />} />
 
       <Route path="/sign-in" element={<Login />} />
-      <Route path="/searchresults" element={<SearchResults />} />
-      <Route path='/property/:propertyId' element={<SingleProperty/>} />
+      <Route
+        path="/searchresults"
+        element={<SearchResults />}
+      />
+      <Route path="/property/:propertyId" element={<SingleProperty />} />
     </Route>
   )
 );
