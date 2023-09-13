@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import Carousel from "../Components/Carousel";
 import TopBar from "../Components/TopBar";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { getHotelPhotosAction } from "../redux/actions/hotelsPhotos.actions";
 import { ReducersType } from "../redux/store";
@@ -16,11 +16,11 @@ import Location from "../assets/Location";
 import { getHotelDescriptionAction } from "../redux/actions/hotelsdescription";
 import CapitalizeFirstLetter from "../utilities/CapitalizeFirstLetter";
 
-
 const SingleProperty = () => {
   const dispatch = useDispatch();
-
+const navigate = useNavigate()
   const { propertyId } = useParams();
+
   const hotelPhotosResponse = useSelector<ReducersType>(
     (state: ReducersType) => state?.hotelPhotos
   ) as reservationsResponseType;
@@ -54,12 +54,12 @@ const SingleProperty = () => {
     <div className="">
       <TopBar />
 
-      <div className="flex flex-col md:mt-[5%] mt-[60%]">
-        <div className="    p-4 md:px-[10%] px-[5%] w-full mx-auto">
+      <div className="flex flex-col md:mt-[5%] mt-[60%] bg-[]">
+        <div className="    p-4 md:px-[10%] px-[5%] w-full mx-auto ">
           {singleHotelResponse.loading ? (
             <SkeletonLoader />
           ) : (
-            <div className="">
+            <div className="border rounded-md p-4">
               {singlePropertyData.name != undefined && (
                 <h1 className="font-bold">
                   {CapitalizeFirstLetter(singlePropertyData.name)}
@@ -78,7 +78,7 @@ const SingleProperty = () => {
               <Spinner size="large" />
             </div>
           ) : (
-            <div className=" ">
+            <div className=" border p-4 rounded-md">
               <Carousel photos={photos} />
               {/* <ImageGallery items={photos} /> */}
             </div>
@@ -89,14 +89,18 @@ const SingleProperty = () => {
           ) : (
             <>
               {hotelDescription.description != undefined && (
-                <p className="mt-4">{`${hotelDescription.description}`}</p>
+                <div className="rounded-md p-4 border mt-4">
+                  <div className="mt-4 bg-[#e4f4ff] p-4 leading-8">{`${hotelDescription.description}`}</div>
+                  <div className="w-full mt-4">
+                    {/* <h1>Most popular facilities</h1> */}
+                    <button onClick={()=>{navigate(`/property/booking/${propertyId}`);}} className="w-[100px] p-4 bg-[#fed772]">
+                      Reserve
+                    </button>
+                  </div>
+                </div>
               )}
             </>
           )}
-
-          <div>
-            <h1>Most popular facilities</h1>
-          </div>
         </div>
       </div>
     </div>

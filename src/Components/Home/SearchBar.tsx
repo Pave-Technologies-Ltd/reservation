@@ -230,6 +230,8 @@ const checkOutDate = `${selectedDayRange?.to?.year}-${selectedDayRange?.to?.mont
             dest_id: locationDetails?.dest_id,
             city_name: locationDetails?.city_name,
           })}
+          // onClick={()=>{alert(checkInDate)
+          // }}
           className="lg:w-[10%] w-[100%] border-4 border-lightbackground h-full bg-background hover:bg-lightbackground text-white font-bold"
         >
           Search

@@ -94,6 +94,22 @@ const SearchResults = () => {
 
   useEffect(() => {
     setProperties([]);
+
+    // if (
+    //   cityName ||
+    //   adult ||
+    //   dest_id ||
+    //   dest_type ||
+    //   room ||
+    //   children_number === undefined
+    // ) {
+    //   return;
+    // }
+    // if(checkin_date || checkout_date === 'undefined-undefined-undefined'){
+    //   return
+    // }
+
+    
     dispatch(
       getHotelsAction(
         room,
@@ -107,7 +123,7 @@ const SearchResults = () => {
     );
   }, []);
 
-    // console.log(serverResponse)
+  // console.log(serverResponse)
 
   return (
     <div className=" w-full h-full flex flex-col">

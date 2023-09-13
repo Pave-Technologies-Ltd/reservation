@@ -28,19 +28,33 @@ const TopBar = () => {
      // console.log(city_name)
 
      if (
-       city_name === undefined &&
-       checkout_date === "undefined-undefined-undefined" &&
-       checkin_date === "undefined-undefined-undefined"
+       city_name === undefined ||
+       (checkout_date === "undefined-undefined-undefined" &&
+       checkin_date === "undefined-undefined-undefined")
      ) {
-       alert("Location Field and Checkin Date and Checkout Date are Empty");
+      return alert("Location Field and Checkin Date and Checkout Date are Empty");
      }
 
-     if (
-       checkout_date === "undefined-undefined-undefined" ||
-       checkin_date === "undefined-undefined-undefined"
-     ) {
-       alert("Checkin Date or  Checkout Date is Empty");
-     }
+    //  if (
+    //    checkout_date === "undefined-undefined-undefined" ||
+    //    checkin_date === "undefined-undefined-undefined"
+    //  ) {
+    //    alert("Checkin Date or  Checkout Date is Empty");
+    //  }
+
+      const searchOptions = {
+        dest_id,
+        dest_type,
+        adult,
+        children_number,
+        checkin_date,
+        checkout_date,
+        room,
+        city_name,
+      }
+
+       sessionStorage.setItem('searchOptions', JSON.stringify(searchOptions));
+      
 
     navigate(
       `/searchresults?CN=${city_name}&room=${room}&adult=${adult}&children_number=${children_number}&checkin_date=${checkin_date}&checkout_date=${checkout_date}&dest_type=${dest_type}&dest_id=${dest_id}`

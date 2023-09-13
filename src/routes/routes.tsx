@@ -4,7 +4,7 @@ import {
   Route,
   // useSearchParams
 } from "react-router-dom";
-import { Contact, Home, Layout, Login, SearchResults, SingleProperty, Stays } from "../Screens";
+import { Booking, Contact, Home, Layout, Login, SearchResults, SingleProperty, Stays } from "../Screens";
 //  const [searchParams] = useSearchParams();
 //  const room = searchParams.get("room") as string;
 //  const adult = searchParams.get("adult") as string;
@@ -29,6 +29,7 @@ export const router = createBrowserRouter(
         element={<SearchResults />}
       />
       <Route path="/property/:propertyId" element={<SingleProperty />} />
+      <Route path="/property/booking/:propertyId" element={<Booking />} />
     </Route>
   )
 );
