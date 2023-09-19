@@ -93,35 +93,36 @@ const SearchResults = () => {
   }, [serverResponse?.result]);
 
   useEffect(() => {
-    setProperties([]);
+    if (!properties?.length) {
+      setProperties([]);
 
-    // if (
-    //   cityName ||
-    //   adult ||
-    //   dest_id ||
-    //   dest_type ||
-    //   room ||
-    //   children_number === undefined
-    // ) {
-    //   return;
-    // }
-    // if(checkin_date || checkout_date === 'undefined-undefined-undefined'){
-    //   return
-    // }
+      // if (
+      //   cityName ||
+      //   adult ||
+      //   dest_id ||
+      //   dest_type ||
+      //   room ||
+      //   children_number === undefined
+      // ) {
+      //   return;
+      // }
+      // if(checkin_date || checkout_date === 'undefined-undefined-undefined'){
+      //   return
+      // }
 
-    
-    dispatch(
-      getHotelsAction(
-        room,
-        adult,
-        checkin_date,
-        checkout_date,
-        dest_type,
-        dest_id,
-        children_number == "0" ? "1" : children_number
-      ) as never
-    );
-  }, []);
+      dispatch(
+        getHotelsAction(
+          room,
+          adult,
+          checkin_date,
+          checkout_date,
+          dest_type,
+          dest_id,
+          children_number == "0" ? "1" : children_number
+        ) as never
+      );
+    }
+  }, [properties?.length, dispatch]);
 
   // console.log(serverResponse)
 
@@ -131,7 +132,7 @@ const SearchResults = () => {
 
       <div className="md:px-[10%] px-[5%]  w-[100%]  gap-4 md:mt-[6%] mt-[60%] flex flex-col ">
         <div className="  w-[100%] h-full md:gap-4 gap-0 mt-[5%] flex">
-          <div className="border md:visible invisible md:w-[20%] w-0 h-full">
+          <div className="md:visible invisible md:w-[20%] w-0 h-full">
             <Checkbox
               label="Hotel"
               handleChange={handleChange}
@@ -145,7 +146,7 @@ const SearchResults = () => {
                 <Spinner size="large" />
               </div>
             ) : (
-              <div className="border  w-[100%] h-full md:p-4 p-0">
+              <div className="md:border  w-[100%] h-full md:p-4 p-0">
                 <div className="">
                   {hotelsResponse.loading ? (
                     ""

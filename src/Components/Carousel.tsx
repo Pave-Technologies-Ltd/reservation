@@ -17,8 +17,14 @@ const Carousel = ({ photos }: CarouselType) => {
       forwardBtnProps={{
         //here you can also pass className, or any other button element attributes
         style: {
-          alignSelf: "center",
-          // background: "black",
+          // alignSelf: "center",
+          position: "absolute",
+          top: 0,
+          bottom: 0,
+          right: "1rem",
+          margin: "auto",
+          zIndex: 100,
+          background: "white",
           border: "1px solid #6f00e7",
           borderRadius: "50%",
           color: "#6f00e7",
@@ -35,8 +41,14 @@ const Carousel = ({ photos }: CarouselType) => {
       backwardBtnProps={{
         //here you can also pass className, or any other button element attributes
         style: {
-          alignSelf: "center",
-          // background: "black",
+          // alignSelf: "center",
+          position: "absolute",
+          top: 0,
+          bottom: 0,
+          left: "1rem",
+          zIndex: 100,
+          margin: "auto",
+          background: "white",
           border: "1px solid #6f00e7",
           borderRadius: "50%",
           color: "#6f00e7",

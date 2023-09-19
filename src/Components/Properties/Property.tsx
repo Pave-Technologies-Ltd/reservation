@@ -61,7 +61,7 @@ const Property = ({ property }: PropertyComponentType) => {
                 onClick={() => {
                   navigate(`/property/${property.hotel_id}`);
                 }}
-                className="text-white font-bold bg-background p-2 hover:bg-lightbackground flex items-center justify-center w-[100%]"
+                className="text-white rounded-md font-bold bg-background p-2 hover:bg-lightbackground flex items-center justify-center w-[100%]"
               >
                 View
               </button>

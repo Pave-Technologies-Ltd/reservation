@@ -18,7 +18,7 @@ import CapitalizeFirstLetter from "../utilities/CapitalizeFirstLetter";
 
 const SingleProperty = () => {
   const dispatch = useDispatch();
-const navigate = useNavigate()
+  const navigate = useNavigate();
   const { propertyId } = useParams();
 
   const hotelPhotosResponse = useSelector<ReducersType>(
@@ -78,7 +78,7 @@ const navigate = useNavigate()
               <Spinner size="large" />
             </div>
           ) : (
-            <div className=" border p-4 rounded-md">
+            <div className=" border p-4 relative rounded-md">
               <Carousel photos={photos} />
               {/* <ImageGallery items={photos} /> */}
             </div>
@@ -93,7 +93,12 @@ const navigate = useNavigate()
                   <div className="mt-4 bg-[#e4f4ff] p-4 leading-8">{`${hotelDescription.description}`}</div>
                   <div className="w-full mt-4">
                     {/* <h1>Most popular facilities</h1> */}
-                    <button onClick={()=>{navigate(`/property/booking/${propertyId}`);}} className="w-[100px] p-4 bg-[#fed772]">
+                    <button
+                      onClick={() => {
+                        navigate(`/property/booking/${propertyId}`);
+                      }}
+                      className="w-[100px] p-4 bg-[#fed772]"
+                    >
                       Reserve
                     </button>
                   </div>
