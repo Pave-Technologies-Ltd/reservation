@@ -77,7 +77,7 @@ const SingleProperty = () => {
                   onClick={() => {
                     navigate(`/property/booking/${propertyId}`);
                   }}
-                  className=" p-4 bg-[#6f00e7] text-white"
+                  className=" p-4 rounded-md bg-[#6f00e7] text-white"
                 >
                   Reserve
                 </button>

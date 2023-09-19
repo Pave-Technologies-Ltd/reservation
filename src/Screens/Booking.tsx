@@ -25,7 +25,7 @@ const Booking = () => {
     dispatch(getSingleHotelAction(propertyId) as never);
   }, []);
 
-  console.log(singleHotelResponse);
+  // console.log(singleHotelResponse);
   return (
     <>
       {/* <TopBar/> */}
@@ -230,11 +230,15 @@ const Booking = () => {
 
               <div className="flex md:flex-nowrap flex-wrap mt-4 md:gap-12 gap-0">
                 <div className=" w-[100%]">
-                  <div className=" mt-4  w-[100px]">
+                  <div className=" mt-4 rounded-md w-[100px]">
                     {/* <h1>Most popular facilities</h1> */}
                     <button
-                     onClick={()=>{alert('Sorry Our Payment System is currently down..Chat with Agent')}}
-                      className=" p-4 bg-[#6f00e7] text-white w-[100px]"
+                      onClick={() => {
+                        alert(
+                          "Sorry Our Payment System is currently down..Chat with Agent"
+                        );
+                      }}
+                      className=" p-4 rounded-md bg-[#6f00e7] text-white w-[100px]"
                     >
                       Pay
                     </button>
