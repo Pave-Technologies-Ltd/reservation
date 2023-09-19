@@ -59,15 +59,28 @@ const SingleProperty = () => {
           {singleHotelResponse.loading ? (
             <SkeletonLoader />
           ) : (
-            <div className="border rounded-md p-4">
-              {singlePropertyData.name != undefined && (
-                <h1 className="font-bold">
-                  {CapitalizeFirstLetter(singlePropertyData.name)}
-                </h1>
-              )}
-              <div className="flex gap-2 items-center">
-                <Location />
-                <p className="text-xs">{singlePropertyData.address}</p>
+            <div className=" border rounded-md p-4 flex justify-between w-full">
+              <div className="flex flex-col ">
+                {singlePropertyData.name != undefined && (
+                  <h1 className="font-bold">
+                    {CapitalizeFirstLetter(singlePropertyData.name)}
+                  </h1>
+                )}
+                <div className="flex gap-2 items-center">
+                  <Location />
+                  <p className="text-xs">{singlePropertyData.address}</p>
+                </div>
+              </div>
+              <div className=" mt-4  w-[100px]">
+                {/* <h1>Most popular facilities</h1> */}
+                <button
+                  onClick={() => {
+                    navigate(`/property/booking/${propertyId}`);
+                  }}
+                  className=" p-4 bg-[#6f00e7] text-white"
+                >
+                  Reserve
+                </button>
               </div>
             </div>
           )}
@@ -91,17 +104,6 @@ const SingleProperty = () => {
               {hotelDescription.description != undefined && (
                 <div className="rounded-md p-4 border mt-4">
                   <div className="mt-4 bg-[#e4f4ff] p-4 leading-8">{`${hotelDescription.description}`}</div>
-                  <div className="w-full mt-4">
-                    {/* <h1>Most popular facilities</h1> */}
-                    <button
-                      onClick={() => {
-                        navigate(`/property/booking/${propertyId}`);
-                      }}
-                      className="w-[100px] p-4 bg-[#fed772]"
-                    >
-                      Reserve
-                    </button>
-                  </div>
                 </div>
               )}
             </>
