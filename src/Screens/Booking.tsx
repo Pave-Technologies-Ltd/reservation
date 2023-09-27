@@ -79,7 +79,20 @@ const Booking = () => {
 
   const singlePropertyData =
     singleHotelResponse.serverResponse as SinglePropertyType;
-
+  const getIcon = (cardType: string) => {
+    switch (cardType) {
+      case "visa":
+        return cardTypeMaps.visa;
+      case "mastercard":
+        return cardTypeMaps.mastercard;
+      case "amex":
+        return cardTypeMaps.amex;
+      case "discover":
+        return cardTypeMaps.discover;
+      case "verve":
+        return cardTypeMaps.verve;
+    }
+  };
   const onCustomerDetailsChange = (value: string, field: string) => {
     switch (field) {
       case "first_name":
@@ -449,7 +462,7 @@ const Booking = () => {
                     {cardDetails?.card_type ? (
                       <img
                         className="h-full"
-                        src={cardTypeMaps[cardDetails?.card_type]}
+                        src={getIcon(cardDetails?.card_type)}
                         alt=""
                       />
                     ) : null}
