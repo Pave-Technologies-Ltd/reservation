@@ -15,8 +15,8 @@ interface SearchBarType {
   searchButtonHandler: (e: {
     room: string;
     adult: string;
-    city_name:string | undefined;
-    checkin_date: string ;
+    city_name: string | undefined;
+    checkin_date: string;
     checkout_date: string;
     children_number: string;
     dest_type: string | undefined;
@@ -39,7 +39,7 @@ const SearchBar = ({ searchButtonHandler }: SearchBarType) => {
     dest_type: string;
     dest_id: string;
     label: string;
-    city_name:string
+    city_name: string;
   };
   const locationModalRef = initialRef;
   const calenderModalRef = initialRef;
@@ -48,7 +48,7 @@ const SearchBar = ({ searchButtonHandler }: SearchBarType) => {
   const [showCalender, setShowcalender] = useState(false);
   const [showUserModal, setShowUserModal] = useState(false);
   const [locationSearchTerm, setLocationSearchTerm] = useState("");
-  const [selectedLocation, setSelectedLocation]= useState('');
+  const [selectedLocation, setSelectedLocation] = useState("");
   const [data, setData] = useState([]);
   const [adult, setAdult] = useState(1);
   const [locationDetails, setLocationDetails] =
@@ -64,8 +64,8 @@ const SearchBar = ({ searchButtonHandler }: SearchBarType) => {
   const allLocations = useSelector<ReducersType>(
     (state: ReducersType) => state?.locations
   ) as reservationsResponseType;
-const checkInDate = `${selectedDayRange?.from?.year}-${selectedDayRange?.from?.month}-${selectedDayRange?.from?.day}`;
-const checkOutDate = `${selectedDayRange?.to?.year}-${selectedDayRange?.to?.month}-${selectedDayRange?.to?.day}`;
+  const checkInDate = `${selectedDayRange?.from?.year}-${selectedDayRange?.from?.month}-${selectedDayRange?.from?.day}`;
+  const checkOutDate = `${selectedDayRange?.to?.year}-${selectedDayRange?.to?.month}-${selectedDayRange?.to?.day}`;
   const UserInputHandler = (action: userInputActionType, type: string) => {
     // Adult
     if (action === "increase" && type === "adult") {
@@ -129,8 +129,12 @@ const checkOutDate = `${selectedDayRange?.to?.year}-${selectedDayRange?.to?.mont
   };
 
   useEffect(() => {
-    setData(Object.values(allLocations.serverResponse as []));
-  }, [allLocations.serverResponse]);
+    if (allLocations?.serverResponse) {
+      setData(() => [...Object.values(allLocations?.serverResponse as [])]);
+    } else {
+      setData(() => []);
+    }
+  }, [allLocations?.serverResponse]);
 
   useEffect(() => {
     const checkIfClickedOutside = (e: Event) => {
@@ -186,7 +190,7 @@ const checkOutDate = `${selectedDayRange?.to?.year}-${selectedDayRange?.to?.mont
     return () => clearTimeout(timer);
   }, [locationSearchTerm, dispatch]);
   // console.log(`${day?.year}-${day?.month}-${day?.day}`)
-    // console.log(allLocations.serverResponse);
+  // console.log(allLocations.serverResponse);
 
   return (
     <div className=" text-background absolute left-0 top-[120px] md:px-[10%] px-[5%] w-[100%]  h-[60px] ">

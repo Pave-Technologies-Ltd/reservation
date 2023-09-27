@@ -1,5 +1,8 @@
-import { GET_HOTELS_FAIL, GET_HOTELS_REQUEST, GET_HOTELS_SUCCESS } from "../constants/hotels.constants"
-
+import {
+  GET_HOTELS_FAIL,
+  GET_HOTELS_REQUEST,
+  GET_HOTELS_SUCCESS,
+} from "../constants/hotels.constants";
 
 export type reservationsResponseType = {
   loading: boolean;
@@ -10,29 +13,49 @@ export type reservationsResponseType = {
     error?: {
       message?: string;
     };
-  };
+  } | null;
 };
 
 export const initialStateRequest = {
   loading: false,
   success: false,
-  serverResponse: {},
-  serverError: {},
-}
+  serverResponse: null,
+  serverError: null,
+};
 
-
-export const getHotelsReducer = (state: reservationsResponseType = initialStateRequest, action: { type: string; payload: unknown }) => {
+export const getHotelsReducer = (
+  state: reservationsResponseType = initialStateRequest,
+  action: { type: string; payload: unknown }
+) => {
   switch (action.type) {
     case GET_HOTELS_REQUEST:
-      return { ...state, loading: true, success: false, serverResponse: {}, serverError: {} }
+      return {
+        ...state,
+        loading: true,
+        success: false,
+        serverResponse: {},
+        serverError: {},
+      };
 
     case GET_HOTELS_SUCCESS:
-      return { ...state, loading: false, success: true, serverResponse: action.payload, serverError: {} }
+      return {
+        ...state,
+        loading: false,
+        success: true,
+        serverResponse: action.payload,
+        serverError: {},
+      };
 
     case GET_HOTELS_FAIL:
-      return { ...state, loading: false, success: false, serverResponse: {}, serverError: action.payload }
+      return {
+        ...state,
+        loading: false,
+        success: false,
+        serverResponse: {},
+        serverError: action.payload,
+      };
 
     default:
-      return state
+      return state;
   }
-}
+};

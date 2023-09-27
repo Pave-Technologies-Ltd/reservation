@@ -36,9 +36,10 @@ const SingleProperty = () => {
     (state: ReducersType) => state?.singleHotel
   ) as reservationsResponseType;
 
-  const photos = Object.values(
-    hotelPhotosResponse.serverResponse as PropertyPhotosType[]
-  );
+  const photos = hotelPhotosResponse?.serverResponse
+    ? Object.values(hotelPhotosResponse.serverResponse as PropertyPhotosType[])
+    : [];
+
   const singlePropertyData =
     singleHotelResponse.serverResponse as SinglePropertyType;
 
@@ -61,14 +62,14 @@ const SingleProperty = () => {
           ) : (
             <div className=" border rounded-md p-4 flex justify-between w-full">
               <div className="flex flex-col ">
-                {singlePropertyData.name != undefined && (
+                {singlePropertyData?.name !== undefined && (
                   <h1 className="font-bold">
-                    {CapitalizeFirstLetter(singlePropertyData.name)}
+                    {CapitalizeFirstLetter(singlePropertyData?.name)}
                   </h1>
                 )}
                 <div className="flex gap-2 items-center">
                   <Location />
-                  <p className="text-xs">{singlePropertyData.address}</p>
+                  <p className="text-xs">{singlePropertyData?.address}</p>
                 </div>
               </div>
               <div className=" mt-4  w-[100px]">
@@ -86,7 +87,7 @@ const SingleProperty = () => {
           )}
         </div>
         <div className="md:px-[10%] px-[5%]">
-          {hotelPhotosResponse.loading ? (
+          {hotelPhotosResponse?.loading ? (
             <div className=" flex items-center w-full justify-center">
               <Spinner size="large" />
             </div>
@@ -97,13 +98,13 @@ const SingleProperty = () => {
             </div>
           )}
 
-          {hotelDescriptionResponse.loading ? (
+          {hotelDescriptionResponse?.loading ? (
             <SkeletonLoader />
           ) : (
             <>
-              {hotelDescription.description != undefined && (
+              {hotelDescription?.description !== undefined && (
                 <div className="rounded-md p-4 border mt-4">
-                  <div className="mt-4 bg-[#e4f4ff] p-4 leading-8">{`${hotelDescription.description}`}</div>
+                  <div className="mt-4 bg-[#e4f4ff] p-4 leading-8">{`${hotelDescription?.description}`}</div>
                 </div>
               )}
             </>

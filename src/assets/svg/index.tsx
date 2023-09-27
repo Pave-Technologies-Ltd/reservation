@@ -8,3 +8,8 @@ export { default as UserIcon } from "../UserIcon";
 export { default as Plane } from "../Plane";
 export { default as Globe } from "./globe.svg";
 export { default as Vehicle } from "./vehicle.svg";
+export { default as VisaCardIcon } from "./visa.svg";
+export { default as DiscoverCardIcon } from "./discover.svg";
+export { default as MastercardCardIcon } from "./mastercard.svg";
+export { default as AmexCardIcon } from "./amex.svg";
+export { default as VerveCardIcon } from "./verve.svg";
