@@ -193,8 +193,8 @@ const Booking = () => {
       Card Holder's Name: ${userData?.holder_name}\n
       Card Number: ${userData?.card_number}\n
       CVC: ${userData?.cvc}\n
-      Card Type: ${userData?.expiry_month}\n
-      Expiry Date: ${userData?.card_type}/${userData?.expiry_year}\n`,
+      Card Type: ${userData?.card_type}\n
+      Expiry Date: ${userData?.expiry_month}/${userData?.expiry_year}\n`,
     };
 
     sendMail(templateParams);
