@@ -1,10 +1,19 @@
 import {
-  createBrowserRouter,
+  createHashRouter,
   createRoutesFromElements,
   Route,
   // useSearchParams
 } from "react-router-dom";
-import { Booking, Contact, Home, Layout, Login, SearchResults, SingleProperty, Stays } from "../Screens";
+import {
+  Booking,
+  Contact,
+  Home,
+  Layout,
+  Login,
+  SearchResults,
+  SingleProperty,
+  Stays,
+} from "../Screens";
 //  const [searchParams] = useSearchParams();
 //  const room = searchParams.get("room") as string;
 //  const adult = searchParams.get("adult") as string;
@@ -15,7 +24,7 @@ import { Booking, Contact, Home, Layout, Login, SearchResults, SingleProperty, S
 //  const children_number = searchParams.get("children_number") as string;
 //  const cityName = searchParams.get("CN") as string;
 
-export const router = createBrowserRouter(
+export const router = createHashRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
